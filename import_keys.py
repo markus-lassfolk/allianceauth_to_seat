@@ -34,7 +34,7 @@ def submit_keys(conf, auth_data, seat_data):
             payload['username'] = conf['api_user']
             payload['password'] = conf['api_pw']
             r = requests.post(conf['url'], data=payload)
-            print(r.json()['status'])
+            print(r.json())
             if r.json()['error']:
                 errors += 1
             else:
