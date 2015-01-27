@@ -22,8 +22,19 @@ def pull_seat_data(conf):
     db_connection.execute(query)
     return db_connection.fetchall()
 
-def submit_keys(conf):
-    pass
+def submit_keys(conf, auth_data, seat_data):
+    #TODO: add more error display on the POST result
+    count = 0
+    auth_data = [{'keyID':item['api_id'],'vCode':item['api_key']} for item in auth_data]
+    seat_data_keys = [item['keyID'] for item in seat_data]
+    for item in auth_data:
+        if item['keyID'] not in seat_data_keys:
+            payload = item.copy()
+            payload['username'] = conf['api_user']
+            payload['password'] = conf['api_pw'] 
+            r = requests.post(conf['url'], data=payload)
+            count += 1
+    print('Submitted {0} API keys.'.format(count))
 
 def read_conf_file(conf_file):
     valid_file = True
@@ -53,7 +64,6 @@ def main(argv):
     auth_data = pull_allianceauth_data(conf)
     seat_data = pull_seat_data(conf)
     return conf,auth_data,seat_data
-
 
 if __name__ == "__main__":
    main(sys.argv[1:])
