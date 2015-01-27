@@ -8,13 +8,21 @@
 import sys, getopt
 import json, pymysql, requests
 
-def pull_allianceauth_data():
-    pass
+def pull_allianceauth_data(conf):
+    database = pymysql.connect(host='localhost', user=conf['mysql_user_auth'], passwd=conf['mysql_pw_auth'])
+    db_connection = database.cursor(pymsql.cursors.DictCursor)
+    query = "SELECT api_id,api_key FROM {0}.eveonline_eveapikeypair".format(conf['mysql_db_auth'])
+    db_connection.execute(query)
+    return db_connection.fetchall()
 
-def pull_seat_data():
-    pass
+def pull_seat_data(conf):
+    database = pymysql.connect(host='localhost', user=conf['mysql_user_seat'], passwd=conf['mysql_pw_seat'])
+    db_connection = database.cursor(pymsql.cursors.DictCursor)
+    query = "SELECT keyID,vCode FROM {0}.seat_keys".format(conf['mysql_db_seat'])
+    db_connection.execute(query)
+    return db_connection.fetchall()
 
-def submit_keys():
+def submit_keys(conf):
     pass
 
 def read_conf_file(conf_file):
@@ -42,7 +50,8 @@ def main(argv):
             conf_file = arg
     print('Input file is "', conf_file)
     conf = read_conf_file(conf_file)
-    
+    auth_data = pull_auth_data(conf)
+    seat_data = pull_seat_data(conf)
 
 
 if __name__ == "__main__":
