@@ -23,11 +23,10 @@ def pull_seat_data(conf):
     return db_connection.fetchall()
 
 def submit_keys(conf, auth_data, seat_data):
-    #TODO: add more error display on the POST result
     count = 0
     errors = 0
-    auth_data = [{'keyID':item['api_id'],'vCode':item['api_key']} for item in auth_data]
-    seat_data_keys = [item['keyID'] for item in seat_data]
+    auth_data = [{'keyID':str(item['api_id']),'vCode':str(item['api_key'])} for item in auth_data]
+    seat_data_keys = [str(item['keyID']) for item in seat_data]
     for item in auth_data:
         if item['keyID'] not in seat_data_keys:
             r = requests.post(conf['url'], data=item)
@@ -36,7 +35,7 @@ def submit_keys(conf, auth_data, seat_data):
                 print(r.json()['message'])
             else:
                 count += 1
-    print('Submitted {0} API keys successfully, there were {1} unsubmitted keys with errors'.format(count, errors))
+    print('Submitted {0} API keys successfully, there were {1} unsubmitted keys with errors. The remainder were already existing.'.format(count, errors))
 
 def read_conf_file(conf_file):
     valid_file = True
@@ -61,7 +60,6 @@ def main(argv):
             sys.exit()
         elif opt in ("-i", "--ifile"):
             conf_file = arg
-    print('Input file is "', conf_file)
     conf = read_conf_file(conf_file)
     auth_data = pull_allianceauth_data(conf)
     seat_data = pull_seat_data(conf)
