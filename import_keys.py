@@ -31,9 +31,9 @@ def submit_keys(conf, auth_data, seat_data):
     for item in auth_data:
         if item['keyID'] not in seat_data_keys:
             r = requests.post(conf['url'], data=item)
-            print(r.json()['message'])
             if r.json()['error']:
                 errors += 1
+                print(r.json()['message'])
             else:
                 count += 1
     print('Submitted {0} API keys successfully, there were {1} unsubmitted keys with errors'.format(count, errors))
