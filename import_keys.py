@@ -29,7 +29,7 @@ def read_conf_file(conf_file):
     valid_file = True
     with open(conf_file,'r') as f:
         conf = json.load(f)
-    req_values = ['user_key1','user_key2', 'url', 'mysql_user_auth', 'mysql_pw_auth', 'mysql_db_auth', 'mysql_user_seat','mysql_pw_seat', 'mysql_db_seat'] 
+    req_values = ['api_user','api_pw', 'url', 'mysql_user_auth', 'mysql_pw_auth', 'mysql_db_auth', 'mysql_user_seat','mysql_pw_seat', 'mysql_db_seat'] 
     for value in req_values:
         if value not in conf:
             raise Exception('Invalid configuration file, need {0} value'.format(value))

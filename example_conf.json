@@ -1,11 +1,11 @@
 {
-    'user_key1': '1234UbfrDAu3',
-    'user_key2': 'V9nf0YuqH8Onzb2n',
-    'url': 'http://localhost:8000/api/v1/key',
-    'mysql_user_auth': 'auth_user',
-    'mysql_pw_auth': '1234',
-    'mysql_db_auth': 'alliance_auth',
-    'mysql_user_seat': 'seat_user',
-    'mysql_pw_seat': '12345678',
-    'mysql_db_seat': 'seat',
+    "api_pw": "V9nf0YuqH8Onzb2n", 
+    "api_user": "1234UbfrDAu3", 
+    "mysql_db_auth": "alliance_auth", 
+    "mysql_db_seat": "seat", 
+    "mysql_pw_auth": "s3cretpassword", 
+    "mysql_pw_seat": "s3cretpassword2", 
+    "mysql_user_auth": "user1", 
+    "mysql_user_seat": "user2", 
+    "url": "http://localhost:8000/api/v1/key"
 }
