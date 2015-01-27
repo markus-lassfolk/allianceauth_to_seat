@@ -8,3 +8,6 @@ A simple (or stupid) EVE API Too (SeAT) is a very, very complete tool allowing c
 My tool does a lazy grab of the MySQL database for Alliance Auth keys and SeAT keys and submits them to the SeAT API after checking they aren't already there with the database. Submitted API keys can then be organized using the People group manager, keeping track of mains and alts (SeAT functionality, not mine.).
 
 Special thanks to qu1ckkkk and Raynaldo Rivera (R4stl1n on github) for their work, I have done very little.
+
+# Future
+I need to rewrite this a bit to use SeAT's API better. It has support for GET and DELETE and this could improve syncing greatly, without requiring a call to SeAT's database directly.
