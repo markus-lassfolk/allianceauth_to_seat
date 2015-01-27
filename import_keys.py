@@ -52,6 +52,7 @@ def main(argv):
     conf = read_conf_file(conf_file)
     auth_data = pull_auth_data(conf)
     seat_data = pull_seat_data(conf)
+    return conf,auth_data,seat_data
 
 
 if __name__ == "__main__":
