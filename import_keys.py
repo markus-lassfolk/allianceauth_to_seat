@@ -10,14 +10,14 @@ import json, pymysql, requests
 
 def pull_allianceauth_data(conf):
     database = pymysql.connect(host='localhost', user=conf['mysql_user_auth'], passwd=conf['mysql_pw_auth'])
-    db_connection = database.cursor(pymsql.cursors.DictCursor)
+    db_connection = database.cursor(pymysql.cursors.DictCursor)
     query = "SELECT api_id,api_key FROM {0}.eveonline_eveapikeypair".format(conf['mysql_db_auth'])
     db_connection.execute(query)
     return db_connection.fetchall()
 
 def pull_seat_data(conf):
     database = pymysql.connect(host='localhost', user=conf['mysql_user_seat'], passwd=conf['mysql_pw_seat'])
-    db_connection = database.cursor(pymsql.cursors.DictCursor)
+    db_connection = database.cursor(pymysql.cursors.DictCursor)
     query = "SELECT keyID,vCode FROM {0}.seat_keys".format(conf['mysql_db_seat'])
     db_connection.execute(query)
     return db_connection.fetchall()
