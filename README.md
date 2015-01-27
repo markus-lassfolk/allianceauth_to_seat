@@ -9,5 +9,12 @@ My tool does a lazy grab of the MySQL database for Alliance Auth keys and SeAT k
 
 Special thanks to qu1ckkkk and Raynaldo Rivera (R4stl1n on github) for their work, I have done very little.
 
+# Install
+
+For ubuntu, install Python 2.7 and pip, then run
+  sudo pip install requests pymysql
+
+Then set up your conf file and you should be good to go.
+
 # Future
 I need to rewrite this a bit to use SeAT's API better. It has support for GET and DELETE and this could improve syncing greatly, without requiring a call to SeAT's database directly.
