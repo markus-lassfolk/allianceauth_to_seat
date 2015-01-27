@@ -1,11 +1,9 @@
 {
-    "api_pw": "V9nf0YuqH8Onzb2n", 
-    "api_user": "1234UbfrDAu3", 
     "mysql_db_auth": "alliance_auth", 
     "mysql_db_seat": "seat", 
     "mysql_pw_auth": "s3cretpassword", 
     "mysql_pw_seat": "s3cretpassword2", 
     "mysql_user_auth": "user1", 
     "mysql_user_seat": "user2", 
-    "url": "http://localhost:8000/api/v1/key"
+    "url": "http://api_pw:api_user@localhost:8000/api/v1/key"
 }

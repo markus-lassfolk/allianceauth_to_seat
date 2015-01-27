@@ -30,11 +30,8 @@ def submit_keys(conf, auth_data, seat_data):
     seat_data_keys = [item['keyID'] for item in seat_data]
     for item in auth_data:
         if item['keyID'] not in seat_data_keys:
-            payload = item.copy()
-            payload['username'] = conf['api_user']
-            payload['password'] = conf['api_pw']
-            r = requests.post(conf['url'], data=payload)
-            print(r.json())
+            r = requests.post(conf['url'], data=item)
+            print(r.json()['message'])
             if r.json()['error']:
                 errors += 1
             else:
@@ -45,7 +42,7 @@ def read_conf_file(conf_file):
     valid_file = True
     with open(conf_file,'r') as f:
         conf = json.load(f)
-    req_values = ['api_user','api_pw', 'url', 'mysql_user_auth', 'mysql_pw_auth', 'mysql_db_auth', 'mysql_user_seat','mysql_pw_seat', 'mysql_db_seat'] 
+    req_values = ['url', 'mysql_user_auth', 'mysql_pw_auth', 'mysql_db_auth', 'mysql_user_seat','mysql_pw_seat', 'mysql_db_seat'] 
     for value in req_values:
         if value not in conf:
             raise Exception('Invalid configuration file, need {0} value'.format(value))
