@@ -5,5 +5,5 @@
     "mysql_pw_seat": "s3cretpassword2", 
     "mysql_user_auth": "user1", 
     "mysql_user_seat": "user2", 
-    "url": "http://api_pw:api_user@localhost:8000/api/v1/key"
+    "url": "http://api_user:api_pw@<your_url>/api/v1/key"
 }
